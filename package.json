@@ -1,0 +1,28 @@
+{
+  "name": "tkdb-helper",
+  "version": "0.1.0",
+  "description": "Helper library for TKDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "keywords": [
+    "TKDB",
+    "Japanese"
+  ],
+  "repository": "github:miikaeru/tkdb-helper",
+  "author": "Miikaeru",
+  "license": "MIT",
+  "devDependencies": {
+    "gts": "^5.3.1",
+    "typescript": "^5.4.3",
+    "@types/node": "20.12.7"
+  }
+}
