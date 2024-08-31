@@ -1,6 +1,6 @@
 // Function to assert type
-export const assertTKDB = (data: unknown): TKDB[] => {
-  return data as TKDB[];
+export const assertTKDB = (data: unknown): TKDB => {
+  return data as TKDB;
 };
 
 export interface TKDB {
@@ -40,6 +40,7 @@ export interface Radical {
   number?: number | undefined;
   meanings?: string[] | undefined;
   readings?: string[] | undefined;
+  readingsRomaji?: string[] | undefined;
   variants?: string[] | undefined;
   variantOf?: string | undefined;
 }
@@ -53,7 +54,9 @@ export interface Kanji {
   strokes?: KanjiStroke[] | undefined;
   composition?: KanjiComposition[] | undefined;
   on?: string[] | undefined;
+  onRomaji?: string[] | undefined;
   kun?: string[] | undefined;
+  kunRomaji?: string[] | undefined;
   kunOku?: string[] | undefined; // includes okurigana
   nanori?: string[] | undefined;
   meanings?: string[] | undefined;
@@ -93,6 +96,7 @@ export interface Word {
 
 export interface WordForm {
   script: string;
+  romaji: string;
   reading?: string;
   furigana?: WordFurigana[] | undefined;
   kanji?: string[];
