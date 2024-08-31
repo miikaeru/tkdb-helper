@@ -4,7 +4,7 @@
   "description": "Helper library for TKDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
@@ -21,8 +21,11 @@
   "author": "Miikaeru",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "20.12.7",
     "gts": "^5.3.1",
-    "typescript": "^5.4.3",
-    "@types/node": "20.12.7"
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.4.3"
   }
 }
