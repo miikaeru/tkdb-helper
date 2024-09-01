@@ -89,6 +89,7 @@ export interface Word {
   id: string;
   forms: WordForm[];
   meanings: WordMeaning[];
+  romajiReadings: string[];
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
   frequency?: number | undefined;

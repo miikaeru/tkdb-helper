@@ -59,6 +59,7 @@ describe('Assign meanings to form', () => {
   test('Assign meanings to form without restriction', () => {
     const form: WordForm = {
       script: 'りんご',
+      romaji: 'ringo',
     };
     const meanings: WordMeaning[] = [
       {translations: ['Apple']},
@@ -66,7 +67,7 @@ describe('Assign meanings to form', () => {
     ];
 
     const expected: FormMeanings = {
-      form: {script: 'りんご'},
+      form: {script: 'りんご', romaji: 'ringo'},
       meanings: [{translations: ['Apple']}],
     };
 
@@ -78,6 +79,7 @@ describe('Assign meanings to form', () => {
   test('Assign meanings to form with restriction', () => {
     const form: WordForm = {
       script: '林檎',
+      romaji: 'ringo',
     };
     const meanings: WordMeaning[] = [
       {translations: ['Apple']},
@@ -85,7 +87,7 @@ describe('Assign meanings to form', () => {
     ];
 
     const expected: FormMeanings = {
-      form: {script: '林檎'},
+      form: {script: '林檎', romaji: 'ringo'},
       meanings: [
         {translations: ['Apple']},
         {translations: ['Apfel'], formRestricions: ['林檎']},
