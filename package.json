@@ -1,8 +1,11 @@
 {
   "name": "tkdb-helper",
-  "version": "0.1.0",
+  "version": "0.1.0-rc.1",
   "description": "Helper library for TKDB",
-  "main": "index.js",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "gts lint",
