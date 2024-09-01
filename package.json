@@ -20,7 +20,10 @@
     "TKDB",
     "Japanese"
   ],
-  "repository": "github:miikaeru/tkdb-helper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miikaeru/tkdb-helper.git"
+  },
   "author": "Miikaeru",
   "license": "MIT",
   "devDependencies": {
