@@ -14,8 +14,7 @@
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run lint",
-    "tag": "sh -c 'VERSION=$(node -p \"require(\\'./package.json\\').version\") && git tag -a \"v$VERSION\" -m \"Release version $VERSION\"'"
+    "posttest": "npm run lint"
   },
   "keywords": [
     "TKDB",
