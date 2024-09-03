@@ -96,11 +96,11 @@ export interface Word {
 }
 
 export interface WordForm {
-  script: string;
+  kana: string;
   romaji: string;
-  reading?: string;
+  kanji?: string;
   furigana?: WordFurigana[] | undefined;
-  kanji?: string[];
+  characters?: string[];
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
   frequency?: number | undefined;

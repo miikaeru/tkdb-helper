@@ -58,7 +58,7 @@ test('Group meanings by category set', () => {
 describe('Assign meanings to form', () => {
   test('Assign meanings to form without restriction', () => {
     const form: WordForm = {
-      script: 'りんご',
+      kana: 'りんご',
       romaji: 'ringo',
     };
     const meanings: WordMeaning[] = [
@@ -67,7 +67,7 @@ describe('Assign meanings to form', () => {
     ];
 
     const expected: FormMeanings = {
-      form: {script: 'りんご', romaji: 'ringo'},
+      form: {kana: 'りんご', romaji: 'ringo'},
       meanings: [{translations: ['Apple']}],
     };
 
@@ -78,7 +78,8 @@ describe('Assign meanings to form', () => {
 
   test('Assign meanings to form with restriction', () => {
     const form: WordForm = {
-      script: '林檎',
+      kanji: '林檎',
+      kana: 'りんご',
       romaji: 'ringo',
     };
     const meanings: WordMeaning[] = [
@@ -87,7 +88,7 @@ describe('Assign meanings to form', () => {
     ];
 
     const expected: FormMeanings = {
-      form: {script: '林檎', romaji: 'ringo'},
+      form: {kanji: '林檎', kana: 'りんご', romaji: 'ringo'},
       meanings: [
         {translations: ['Apple']},
         {translations: ['Apfel'], formRestricions: ['林檎']},

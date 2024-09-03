@@ -98,15 +98,16 @@ export const assignMeaningsToForm = (
   form: WordForm,
   meanings: WordMeaning[]
 ): FormMeanings => {
-  const filteredMeanings = meanings.filter(meaning => {
-    const includesRestriction =
-      meaning.formRestricions?.includes(form.script) ?? true;
-    return includesRestriction;
+  const validMeanings = meanings.filter(meaning => {
+    const isInvaldDuerestriction =
+      meaning.formRestricions?.includes(form.kanji ?? '') ?? true;
+
+    return isInvaldDuerestriction;
   });
 
   return {
     form,
-    meanings: filteredMeanings,
+    meanings: validMeanings,
   };
 };
 
