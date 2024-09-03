@@ -89,7 +89,7 @@ export interface Word {
   id: string;
   forms: WordForm[];
   meanings: WordMeaning[];
-  romajiReadings: string[];
+  romajiReadings?: string[] | undefined;
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
   frequency?: number | undefined;
@@ -97,10 +97,10 @@ export interface Word {
 
 export interface WordForm {
   kana: string;
-  romaji: string;
-  kanji?: string;
+  romaji?: string | undefined;
+  kanji?: string | undefined;
   furigana?: WordFurigana[] | undefined;
-  characters?: string[];
+  characters?: string[] | undefined;
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
   frequency?: number | undefined;
