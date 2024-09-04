@@ -62,6 +62,7 @@ export interface Kanji {
   meanings?: string[] | undefined;
   frequency?: number | undefined; // frequency from kanjidic2
   frequency2?: number | undefined; // frequency from kanjium
+  frequency3?: number | undefined; // frequency from yomitan
   grade?: number | undefined;
   jlpt?: JLPT | undefined;
   antonyms?: string[] | undefined;
@@ -88,7 +89,7 @@ export interface KanjiComposition {
 export interface Word {
   id: string;
   forms: WordForm[];
-  meanings: WordMeaning[];
+  meanings?: string[] | undefined;
   romajiReadings?: string[] | undefined;
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
