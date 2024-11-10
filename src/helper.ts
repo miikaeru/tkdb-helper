@@ -6,7 +6,7 @@ export interface WordRefubrished extends Word {
 
 export interface FormCategoriesMeanings {
   form: WordForm;
-  categoriesMeanings: CategoriesMeanings[]; // meanings by category
+  categoriesMeanings?: CategoriesMeanings[] | undefined; // meanings by category
 }
 
 export interface CategoriesMeanings {
@@ -16,7 +16,7 @@ export interface CategoriesMeanings {
 
 export interface FormMeanings {
   form: WordForm;
-  meanings: WordMeaning[];
+  meanings?: WordMeaning[] | undefined;
 }
 
 export const areCategoriesEqual = (
@@ -54,7 +54,7 @@ export const groupMeaningsByCategories = (
     ];
 
     // Update lastWordClasses if the current meaning has word classes defined
-    if (meaning.wordClasses !== undefined) {
+    if (meaning.wordClasses) {
       lastWordClasses = meaning.wordClasses;
     }
 
@@ -65,7 +65,7 @@ export const groupMeaningsByCategories = (
     delete meaning.miscCategories;
 
     // If there are no current categories, initialize them with the categories of the first meaning
-    if (currentCategories === undefined) {
+    if (!currentCategories) {
       currentCategories = categories;
       currentMeanings = [meaning];
     } else if (areCategoriesEqual(currentCategories, categories)) {
@@ -83,7 +83,7 @@ export const groupMeaningsByCategories = (
   }
 
   // After looping, push the final group if there are any remaining meanings
-  if (currentCategories !== undefined && currentMeanings.length > 0) {
+  if (currentCategories && currentMeanings.length > 0) {
     categoriesMeanings.push({
       categories: currentCategories,
       meanings: currentMeanings,
@@ -96,13 +96,13 @@ export const groupMeaningsByCategories = (
 
 export const assignMeaningsToForm = (
   form: WordForm,
-  meanings: WordMeaning[]
+  meanings?: WordMeaning[] | undefined
 ): FormMeanings => {
-  const validMeanings = meanings.filter(meaning => {
-    const isInvaldDuerestriction =
+  const validMeanings = meanings?.filter(meaning => {
+    const isInvaldDueRestriction =
       meaning.formRestricions?.includes(form.kanji ?? '') ?? true;
 
-    return isInvaldDuerestriction;
+    return isInvaldDueRestriction;
   });
 
   return {
@@ -112,18 +112,15 @@ export const assignMeaningsToForm = (
 };
 
 export const createRefubrishedWord = (word: Word): WordRefubrished => {
-  const formMeanings = word.forms.map(form => {
-    return assignMeaningsToForm(form, word.meanings);
-  });
-
-  const formCategoriesMeanings: FormCategoriesMeanings[] = formMeanings.map(
-    formMeaning => {
-      const categoriesMeanings = groupMeaningsByCategories(
-        formMeaning.meanings
-      );
+  const formCategoriesMeanings: FormCategoriesMeanings[] = word.forms.map(
+    form => {
+      const assignedMeanings = assignMeaningsToForm(form, word.meanings);
+      const categoriesMeanings = assignedMeanings.meanings
+        ? groupMeaningsByCategories(assignedMeanings.meanings)
+        : undefined;
 
       return {
-        form: formMeaning.form,
+        form,
         categoriesMeanings,
       };
     }
@@ -139,7 +136,7 @@ export const getCategory = (
   lookup: string,
   keywords: Keywords
 ): string | undefined => {
-  const categories: Record<string, string> = {
+  const categories = {
     ...keywords.wordMeaningPos,
     ...keywords.wordMeaningMisc,
     ...keywords.wordMeaningField,

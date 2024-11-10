@@ -90,7 +90,7 @@ export interface KanjiComposition {
 export interface Word {
   id: string;
   forms: WordForm[];
-  meanings?: string[] | undefined;
+  meanings?: WordMeaning[] | undefined;
   romajiReadings?: string[] | undefined;
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
