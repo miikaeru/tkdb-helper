@@ -34,8 +34,8 @@ export interface Keywords {
 
 export interface Radical {
   id: string;
-  radical: string;
-  kradical?: string | undefined;
+  literal: string;
+  krad_reference?: string | undefined;
   strokecount: number;
   number?: number | undefined;
   meanings?: string[] | undefined;
@@ -77,10 +77,11 @@ export interface KanjiStroke {
   y: string;
 }
 
+export type KanjiCompositionType = 'kanji' | 'radical';
+
 export interface KanjiComposition {
   element: string;
-  isRadical?: boolean | undefined;
-  isKanji?: boolean | undefined;
+  type: KanjiCompositionType;
   composition?: KanjiComposition[] | undefined;
 }
 
