@@ -14,7 +14,7 @@ export interface TKDB {
 
 // Shared
 
-export type JLPT = 'n1' | 'n2' | 'n3' | 'n4' | 'n5';
+export type JLPT = 1 | 2 | 3 | 4 | 5;
 
 // Keywords
 
@@ -36,6 +36,7 @@ export interface Radical {
   id: string;
   literal: string;
   kradReference?: string | undefined;
+  kvgReference?: string | undefined;
   strokecount: number;
   number?: number | undefined;
   meanings?: string[] | undefined;
@@ -59,16 +60,18 @@ export interface Kanji {
   kunRomaji?: string[] | undefined;
   kunOku?: string[] | undefined; // includes okurigana
   nanori?: string[] | undefined;
+
   meanings?: string[] | undefined;
   frequency?: number | undefined; // frequency from kanjidic2
   frequency2?: number | undefined; // frequency from kanjium
-  frequency3?: number | undefined; // frequency from yomitan
   grade?: number | undefined;
   jlpt?: JLPT | undefined;
   antonyms?: string[] | undefined;
   lookalikes?: string[] | undefined;
   synonyms?: string[] | undefined;
   radicals?: string[] | undefined; // radicals from kradfilex
+  keyword?: string | undefined;
+  mnemonic?: string | undefined;
 }
 
 export interface KanjiStroke {
