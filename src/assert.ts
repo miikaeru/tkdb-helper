@@ -35,8 +35,6 @@ export interface Keywords {
 export interface Radical {
   id: string;
   literal: string;
-  kradReference?: string | undefined;
-  kvgReference?: string | undefined;
   strokecount: number;
   number?: number | undefined;
   meanings?: string[] | undefined;
