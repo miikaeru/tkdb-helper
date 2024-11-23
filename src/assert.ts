@@ -44,6 +44,8 @@ export interface Radical {
   readingsRomaji?: string[] | undefined;
   variants?: string[] | undefined;
   variantOf?: string | undefined;
+  keyword?: string | undefined;
+  mnemonic?: string | undefined;
 }
 
 // Kanji
