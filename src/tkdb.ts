@@ -1,3 +1,14 @@
+import {
+  JLPT,
+  KanjiGrade,
+  WordFormInfo,
+  WordMeaningDial,
+  WordMeaningField,
+  WordMeaningMisc,
+  WordMeaningPos,
+  WordTranslationType,
+} from './categories';
+
 // Function to assert type
 export const assertTKDB = (data: unknown): TKDB => {
   return data as TKDB;
@@ -6,28 +17,23 @@ export const assertTKDB = (data: unknown): TKDB => {
 export interface TKDB {
   version: string;
   dateOfCreation: Date;
-  keywords: Keywords;
+  categories: Categories;
   words: Word[];
   kanjis: Kanji[];
   radicals: Radical[];
 }
 
-// Shared
+// Categories
 
-export type JLPT = 1 | 2 | 3 | 4 | 5;
-
-// Keywords
-
-export interface Keywords {
-  jlpt: Record<string, string>;
-  kanjiGrade: Record<string, string>;
-  wordMeaningDial: Record<string, string>;
-  wordMeaningField: Record<string, string>;
-  wordMeaningGlossType: Record<string, string>;
-  wordMeaningMisc: Record<string, string>;
-  wordMeaningPos: Record<string, string>;
-  wordKanjiInfo: Record<string, string>;
-  wordKanaInfo: Record<string, string>;
+export interface Categories {
+  jlpt: Record<JLPT, string>;
+  kanjiGrade: Record<KanjiGrade, string>;
+  wordMeaningDial: Record<WordMeaningDial, string>;
+  wordMeaningField: Record<WordMeaningField, string>;
+  wordMeaningPos: Record<WordMeaningPos, string>;
+  wordMeaningMisc: Record<WordMeaningMisc, string>;
+  wordTranslationType: Record<WordTranslationType, string>;
+  wordFormInfo: Record<WordFormInfo, string>;
 }
 
 // Radical
@@ -60,11 +66,10 @@ export interface Kanji {
   kunRomaji?: string[] | undefined;
   kunOku?: string[] | undefined; // includes okurigana
   nanori?: string[] | undefined;
-
   meanings?: string[] | undefined;
   frequency?: number | undefined; // frequency from kanjidic2
   frequency2?: number | undefined; // frequency from kanjium
-  grade?: number | undefined;
+  grade?: KanjiGrade | undefined;
   jlpt?: JLPT | undefined;
   antonyms?: string[] | undefined;
   lookalikes?: string[] | undefined;
@@ -91,32 +96,26 @@ export interface KanjiComposition {
 // Word
 
 export interface Word {
-  id: string;
+  id: number;
   forms: WordForm[];
-  meanings?: WordMeaning[] | undefined;
-  romajiReadings?: string[] | undefined;
-  jlpt?: JLPT | undefined;
-  common?: boolean | undefined;
-  frequency?: number | undefined;
+  meanings: WordMeaning[];
+  searchWords?: string[] | undefined; // wrong forms but used for search purposes
 }
 
 export interface WordForm {
+  wordId: number;
+  id: string;
   kana: string;
-  romaji?: string | undefined;
   kanji?: string | undefined;
   furigana?: WordFurigana[] | undefined;
-  characters?: string[] | undefined;
+  romaji?: string | undefined;
+  usedKanji?: string[] | undefined;
   jlpt?: JLPT | undefined;
   common?: boolean | undefined;
   frequency?: number | undefined;
-  irregularKanji?: boolean | undefined;
-  irregularReading?: boolean | undefined;
-  irregularOkurigana?: boolean | undefined;
-  rarelyUsedKanji?: boolean | undefined;
-  outdatedReading?: boolean | undefined;
-  outdatedKanji?: boolean | undefined;
-  falseReading?: boolean | undefined;
-  ateji?: boolean | undefined;
+  unusual?: boolean | undefined;
+  informations?: WordFormInfo[] | undefined;
+  meanings: WordMeaning[];
 }
 
 export interface WordFurigana {
@@ -125,14 +124,20 @@ export interface WordFurigana {
 }
 
 export interface WordMeaning {
-  translations?: string[] | undefined;
-  wordClasses?: string[] | undefined;
-  fieldCategories?: string[] | undefined;
-  dialectCategories?: string[] | undefined;
-  miscCategories?: string[] | undefined;
+  id: string;
+  restrictions?: string[] | undefined;
+  translations: WordMeaningTranslation[];
+  posCategories?: WordMeaningPos[] | undefined;
+  fieldCategories?: WordMeaningField[] | undefined;
+  dialectCategories?: WordMeaningDial[] | undefined;
+  miscCategories?: WordMeaningMisc[] | undefined;
   informations?: string[] | undefined;
-  formRestricions?: string[] | undefined;
   languageSources?: WordLanguageSource[] | undefined;
+}
+
+export interface WordMeaningTranslation {
+  text: string;
+  type?: WordTranslationType | undefined;
 }
 
 export interface WordLanguageSource {
