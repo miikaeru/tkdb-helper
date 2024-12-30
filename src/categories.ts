@@ -198,7 +198,7 @@ export const CATEGORIES = {
     yoji: 'Yojijukugo (four-character idiom)',
   },
   wordMeaningPos: {
-    adjF: 'Pre-noun adjective', // 'noun or verb acting prenominally
+    adjF: 'Pre-noun adjective', // noun or verb acting prenominally
     adjI: 'Adjective (い)', // adjective (keiyoushi)
     adjIx: 'Adjective (よい/いい)', // adjective (keiyoushi) - yoi/ii class
     adjKu: 'Adjective (く)', // "ku" adjective (archaic)

@@ -2,6 +2,8 @@ import {CATEGORIES} from './categories';
 
 export const getTagDescription = (tag: string): string | undefined => {
   const allCategories = {
+    ...CATEGORIES.kanjiGrade,
+    ...CATEGORIES.jlpt,
     ...CATEGORIES.wordMeaningPos,
     ...CATEGORIES.wordMeaningField,
     ...CATEGORIES.wordMeaningMisc,
