@@ -1,5 +1,5 @@
-import {getTagDescription} from './helper';
+import {getMeaningCatDescr} from './helper';
 
 test('getTagDescription returns the correct description for a given tag', () => {
-  expect(getTagDescription('n')).toBe('Noun');
+  expect(getMeaningCatDescr('n')).toBe('Noun');
 });

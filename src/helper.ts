@@ -1,9 +1,23 @@
 import {CATEGORIES} from './categories';
 
-export const getTagDescription = (tag: string): string | undefined => {
+export const getKanjiGradeDescr = (tag: number): string | undefined => {
   const allCategories = {
     ...CATEGORIES.kanjiGrade,
+  } as Record<string, string>;
+  const description = allCategories[tag];
+  return description ?? undefined;
+};
+
+export const getJLPTDescr = (tag: number): string | undefined => {
+  const allCategories = {
     ...CATEGORIES.jlpt,
+  } as Record<string, string>;
+  const description = allCategories[tag];
+  return description ?? undefined;
+};
+
+export const getMeaningCatDescr = (tag: string): string | undefined => {
+  const allCategories = {
     ...CATEGORIES.wordMeaningPos,
     ...CATEGORIES.wordMeaningField,
     ...CATEGORIES.wordMeaningMisc,
