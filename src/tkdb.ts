@@ -99,6 +99,7 @@ export interface Word {
   id: number;
   forms: WordForm[];
   meanings: WordMeaning[];
+  meaningsSummary: WordMeaningTranslation[];
   searchWords?: string[] | undefined; // wrong forms but used for search purposes
 }
 
