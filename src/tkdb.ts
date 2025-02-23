@@ -85,11 +85,11 @@ export interface KanjiStroke {
   y: string;
 }
 
-export type KanjiCompositionType = 'kanji' | 'radical';
+export type KanjiComponentType = 'kanji' | 'radical';
 
 export interface KanjiComposition {
-  element: string;
-  type: KanjiCompositionType;
+  component: string;
+  type: KanjiComponentType;
   composition?: KanjiComposition[] | undefined;
 }
 
